@@ -30,17 +30,26 @@ root.resizable(False, False)
 title_label = tk.Label(root, text="IP Address Tracker", font=("Arial", 18, "bold"))
 title_label.pack(pady=10)
 
-tk.Label(root, text="Enter IP Address:").pack(pady=5)
+tk.Label(root, text="Enter IP Address:", font=("Arial", 11)).pack(pady=5)
 entry = tk.Entry(root, width=30, font=("Arial", 12))
 entry.pack(pady=5)
 
-track_button = tk.Button(root, text="Track IP", command=track_ip)
+track_button = tk.Button(
+    root,
+    text="Track IP",
+    command=track_ip,
+    bg="#4CAF50",
+    fg="white",
+    font=("Arial", 12, "bold"),
+    padx=20,
+    pady=5
+)
 track_button.pack(pady=10)
 
-tk.Label(root, text="Results:").pack(pady=5)
+tk.Label(root, text="Results:", font=("Arial", 11)).pack(pady=5)
 
-result_text = tk.Text(root, height=10, width=50)
-result_text.pack(pady=10)
+result_text = tk.Text(root, height=10, width=50, font=("Arial", 10))
+result_text.pack(pady=10, padx=10)
 
 scrollbar = tk.Scrollbar(root, command=result_text.yview)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
