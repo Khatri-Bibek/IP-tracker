@@ -20,4 +20,8 @@ tk.Label(root, text="Results:").pack(pady=5)
 result_text = tk.Text(root, height=10, width=50)
 result_text.pack(pady=10)
 
+scrollbar = tk.Scrollbar(root, command=result_text.yview)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+result_text.config(yscrollcommand=scrollbar.set)
+
 root.mainloop()
