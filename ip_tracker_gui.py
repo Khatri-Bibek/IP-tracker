@@ -5,19 +5,22 @@ import requests
 def track_ip():
     ip = entry.get()
 
-    # ✅ Input validation
     if not ip:
         messagebox.showwarning("Input Error", "Please enter an IP address")
         return
 
-    url = f"http://ipinfo.io/{ip}/json"
-    response = requests.get(url)
-    data = response.json()
+    try:
+        url = f"http://ipinfo.io/{ip}/json"
+        response = requests.get(url)
+        data = response.json()
 
-    result_text.delete("1.0", tk.END)
+        result_text.delete("1.0", tk.END)
 
-    for key, value in data.items():
-        result_text.insert(tk.END, f"{key}: {value}\n")
+        for key, value in data.items():
+            result_text.insert(tk.END, f"{key}: {value}\n")
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to fetch data: {e}")
 
 root = tk.Tk()
 root.title("IP Tracker")
