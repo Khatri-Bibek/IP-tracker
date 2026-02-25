@@ -1,4 +1,16 @@
 import tkinter as tk
+import requests
+
+def track_ip():
+    ip = entry.get()
+    url = f"http://ipinfo.io/{ip}/json"
+    response = requests.get(url)
+    data = response.json()
+
+    result_text.delete("1.0", tk.END)
+
+    for key, value in data.items():
+        result_text.insert(tk.END, f"{key}: {value}\n")
 
 root = tk.Tk()
 root.title("IP Tracker")
@@ -12,7 +24,7 @@ tk.Label(root, text="Enter IP Address:").pack(pady=5)
 entry = tk.Entry(root, width=30, font=("Arial", 12))
 entry.pack(pady=5)
 
-track_button = tk.Button(root, text="Track IP")
+track_button = tk.Button(root, text="Track IP", command=track_ip)
 track_button.pack(pady=10)
 
 tk.Label(root, text="Results:").pack(pady=5)
