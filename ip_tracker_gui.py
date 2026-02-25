@@ -15,4 +15,9 @@ entry.pack(pady=5)
 track_button = tk.Button(root, text="Track IP")
 track_button.pack(pady=10)
 
+tk.Label(root, text="Results:").pack(pady=5)
+
+result_text = tk.Text(root, height=10, width=50)
+result_text.pack(pady=10)
+
 root.mainloop()
